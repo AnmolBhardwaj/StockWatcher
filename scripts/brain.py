@@ -35,6 +35,11 @@ class BrainService:
             "1. Short-term: Use Trend/Drift to pick the specific day to buy.\n"
             "2. Mid-term: Use Price vs EMA(50) to decide to Hold or Buy More. (Below EMA50 = Caution/Value).\n"
             "3. Long-term: Use Policy (Nuclear/Defense) to stay in the stock for 10 years.\n\n"
+
+            "### VISUAL INDICATORS (MANDATORY):\n"
+            "- 🟢 BUY: Confidence Score > 0.7.\n"
+            "- 🟡 MONITOR: Confidence Score 0.4 - 0.7.\n"
+            "- 🔴 AVOID: Confidence Score < 0.4.\n"
             
             "### RESPONSE FORMAT (STRICT)\n"
             "**[TICKER] | Score: [X.X/1.0] | ACTION: [BUY/WAIT/HOLD]**\n"
