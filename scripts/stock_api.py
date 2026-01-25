@@ -26,38 +26,40 @@ class StockService:
         """Calculates 3-Layer Metrics: EMA(20/50), Drift, and Fundamentals."""
         try:
             ticker = yf.Ticker(ticker_symbol)
-            # Fetch 60 days to calculate accurate EMA(50)
+            # Fetch 60 days to ensure EMA(50) is accurate
             df = ticker.history(period="60d")
             
             if df.empty:
                 logger.warning(f"⚠️ No history found for {ticker_symbol}")
                 return None
 
-            # 1. Technicals (Pandas Native)
+            # 1. Technical Math (Pandas Native)
+            # We use float() and bool() to convert NumPy types to Python types for JSON compatibility
             current_price = df['Close'].iloc[-1]
             ema_20 = df['Close'].ewm(span=20, adjust=False).mean().iloc[-1]
             ema_50 = df['Close'].ewm(span=50, adjust=False).mean().iloc[-1]
             
             # Linear Drift (Slope of last 5 days)
-            # Positive = UP Trend, Negative = DOWN Trend
-            drift_val = df['Close'].tail(5).diff().mean()
+            drift_val = df['Close'].diff().tail(5).mean()
             drift_signal = "UP" if drift_val > 0 else "DOWN"
 
-            # 2. Fundamentals (For Layer 3 Score)
+            # 2. Fundamentals
             info = ticker.info
-            debt_ratio = info.get('debtToEquity', 0)
-            margins = info.get('profitMargins', 0)
+            # Handle potential None values safely
+            debt_ratio = info.get('debtToEquity')
+            margins = info.get('profitMargins')
 
             return {
-                "symbol": ticker_symbol,
-                "price": round(current_price, 2),
-                "ema_20": round(ema_20, 2),
-                "ema_50": round(ema_50, 2),
-                "drift": drift_signal,
-                "is_bullish": current_price > ema_20,
-                "is_structural": current_price > ema_50, # Mid-term check
-                "debt_ratio": debt_ratio,
-                "margins": margins
+                "symbol": str(ticker_symbol),
+                "price": float(round(current_price, 2)),
+                "ema_20": float(round(ema_20, 2)),
+                "ema_50": float(round(ema_50, 2)),
+                "drift": str(drift_signal),
+                # CRITICAL FIX: Explicit bool() casting
+                "is_bullish": bool(current_price > ema_20),
+                "is_structural": bool(current_price > ema_50),
+                "debt_ratio": float(debt_ratio) if debt_ratio is not None else 0.0,
+                "margins": float(margins) if margins is not None else 0.0
             }
         except Exception as e:
             logger.error(f"❌ Math Error on {ticker_symbol}: {e}")
