@@ -1,37 +1,66 @@
-# scripts/notifier.py
-import os
 import requests
+import os
 import logging
+import time
 
 logger = logging.getLogger("Telegram_Notifier")
 
 class TelegramNotifier:
-    TOKEN = os.getenv("TELEGRAM_TOKEN")
-    CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-
     @classmethod
-    def send_alpha(cls, message):
-        """Sends the Strategic Alpha report to the user."""
-        if not cls.TOKEN or not cls.CHAT_ID:
-            logger.error("🚫 NOTIFIER ERROR: Telegram credentials missing in environment.")
+    def send_alpha(cls, text):
+        token = os.getenv("TELEGRAM_TOKEN")
+        chat_id = os.getenv("TELEGRAM_CHAT_ID")
+        
+        if not token or not chat_id:
+            logger.error("🚫 Credentials missing.")
             return False
 
-        url = f"https://api.telegram.org/bot{cls.TOKEN}/sendMessage"
+        # Telegram limit is 4096. We use 3800 to be safe with HTML tags.
+        MAX_LENGTH = 3800 
         
-        # Payload optimized for Telegram MarkdownV2 or HTML
-        # Using HTML here as it handles special characters in LLM output better
-        payload = {
-            "chat_id": cls.CHAT_ID,
-            "text": f"🚀 <b>STRATEGIC ALPHA REPORT</b>\n\n{message}",
-            "parse_mode": "HTML"
-        }
+        # If text is short, send normally
+        if len(text) <= MAX_LENGTH:
+            return cls._execute_send(token, chat_id, text)
 
+        # Split logic: Break by paragraphs to keep info readable
+        logger.info(f"📏 Report too long ({len(text)} chars). Splitting into chunks...")
+        chunks = []
+        current_chunk = ""
+        
+        for paragraph in text.split('\n\n'):
+            if len(current_chunk) + len(paragraph) < MAX_LENGTH:
+                current_chunk += paragraph + "\n\n"
+            else:
+                chunks.append(current_chunk.strip())
+                current_chunk = paragraph + "\n\n"
+        chunks.append(current_chunk.strip())
+
+        # Send each chunk
+        success = True
+        for i, chunk in enumerate(chunks):
+            header = f"<b>[PART {i+1}/{len(chunks)}]</b>\n"
+            if not cls._execute_send(token, chat_id, header + chunk):
+                success = False
+            time.sleep(1) # Prevent rate limiting
+            
+        return success
+
+    @classmethod
+    def _execute_send(cls, token, chat_id, message_text):
+        url = f"https://api.telegram.org/bot{token}/sendMessage"
+        payload = {
+            "chat_id": chat_id,
+            "text": message_text,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": True
+        }
         try:
-            logger.info("📡 Dispatching alert to Telegram...")
-            response = requests.post(url, data=payload, timeout=10)
+            response = requests.post(url, json=payload)
             response.raise_for_status()
-            logger.info("✅ Telegram notification delivered.")
             return True
         except Exception as e:
-            logger.error(f"❌ Telegram delivery failed: {e}")
+            # Fallback: Try sending as plain text if HTML fails
+            logger.error(f"❌ Chunk failed: {e}. Attempting plain text fallback.")
+            payload.pop("parse_mode")
+            requests.post(url, json=payload)
             return False
