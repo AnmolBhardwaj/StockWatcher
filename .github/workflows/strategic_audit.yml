@@ -14,6 +14,8 @@ on:
 jobs:
   audit_and_poll:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Explicitly allow writing to the repo
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
