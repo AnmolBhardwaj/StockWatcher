@@ -47,5 +47,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add data/*.json price_list.json
+          # 1. Use the -f (force) or just add the directory
+          # 2. 'git add data/' won't crash if the folder is empty or doesn't exist
+          git add data/ || echo "No data folder found to add"
+          
+          # 3. Only commit if there are actual changes to avoid 'empty commit' errors
           git diff-index --quiet HEAD || (git commit -m "Update strategic data [skip ci]" && git push)
