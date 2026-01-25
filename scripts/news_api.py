@@ -54,10 +54,11 @@ class NewsService:
 
                     if is_ticker_match: score += 5
                     if is_impact_match: score += 4
-                    if is_nuclear_match: score += 3
+                    if is_nuclear_match: score += 4 # Upgraded from 3 to 4
 
-                    # 2. Filter: Only save if score >= 5 (Direct Ticker news) OR is high-value Nuclear
-                    if score >= 5 and entry.link not in seen_links:
+                    # 2. Strategic Threshold
+                    # ALLOW if: Direct Ticker news (>=5) OR high-impact Nuclear news (>=4)
+                    if (score >= 4) and entry.link not in seen_links:
                         category = "ORDER_WIN" if (is_ticker_match and is_impact_match) else "STRATEGIC"
                         
                         news_item = {
