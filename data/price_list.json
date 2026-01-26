@@ -1,62 +1,56 @@
 [
   {
     "date": "2026-01-26",
-    "time": "03:33:23",
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
         "price": 242.5,
-        "ema_20": 267.3,
-        "ema_50": 273.38,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
+        "ema_50": 270.81,
+        "is_structural_bull": false,
+        "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
-        "margins": 0.026730001
+        "margins": 0.026730001,
+        "timestamp": "2026-01-26T10:01:31.497188"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
         "price": 2400.2,
-        "ema_20": 2515.79,
-        "ema_50": 2492.06,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
+        "ema_50": 2445.12,
+        "is_structural_bull": false,
+        "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
-        "margins": 0.06887
+        "margins": 0.06887,
+        "timestamp": "2026-01-26T10:01:31.753178"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
         "price": 152.07,
-        "ema_20": 165.1,
-        "ema_50": 170.13,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
+        "ema_50": 171.16,
+        "is_structural_bull": false,
+        "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
-        "margins": -0.44786
+        "margins": -0.44786,
+        "timestamp": "2026-01-26T10:01:32.007406"
       },
       "LT.NS": {
         "symbol": "LT.NS",
         "price": 3743.8,
-        "ema_20": 3920.43,
-        "ema_50": 3977.77,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
+        "ema_50": 3957.26,
+        "is_structural_bull": false,
+        "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
-        "margins": 0.059520002
+        "margins": 0.059520002,
+        "timestamp": "2026-01-26T10:01:32.285270"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
         "price": 336.7,
-        "ema_20": 339.04,
-        "ema_50": 334.22,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": true,
+        "ema_50": 334.47,
+        "is_structural_bull": true,
+        "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
-        "margins": 0.12718001
+        "margins": 0.12718001,
+        "timestamp": "2026-01-26T10:01:32.558803"
       }
     }
   }
