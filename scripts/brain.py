@@ -1,75 +1,99 @@
 import json
 import os
 import logging
+from groq import Groq
 
-# High-Density Logging
+
+# Custom Instruction: Always add lots of logs
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("PortfolioManager_Brain")
 
 class BrainService:
+    # Hard constraint: Monthly SIP Budget
+    TOTAL_BUDGET = 20000 
     PRICE_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "price_list.json")
     NEWS_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "news_list.json")
     
     @classmethod
     def prepare_payload(cls):
-        logger.info("🧠 Brain: Compiling 3-Layer Logic Payload...")
+        logger.info("🧠 Initializing SIP Alpha Deployment Engine...")
         
         prices = cls._read_json(cls.PRICE_FILE)
         news = cls._read_json(cls.NEWS_FILE)
-        # Focus on last 15 news items to avoid noise
-        recent_news = news[-15:] if news else [] 
-
-        # --- THE 3-LAYER STRATEGIC PROMPT ---
-        system_prompt = (
-            "You are a Strategic SIP Advisor for Indian Energy/Defense. "
-            "Your mandate is to evaluate: BHEL, MTAR, LT, NTPC, and WALCHANNAG.\n\n"
-            
-            "### THE SCORING FORMULA\n"
-            "Every ticker must receive a 'Confidence Score' based on:\n"
-            "Score = 0.4(Trend) + 0.3(News) + 0.3(Fundamentals)\n"
-            "- Trend: +1.0 if Price > EMA(20) AND Drift is 'UP'. Else 0.\n"
-            "- News: +1.0 if high-impact policy (SHANTI Bill, SMR Tenders). Else 0.\n"
-            "- Fundamentals: +1.0 if clear earnings visibility (Margins > 8%). Else 0.\n\n"
-            
-            "### THE 3-LAYER FILTER (STRICT)\n"
-            "1. Short-term: Use Trend/Drift to pick the specific day to buy.\n"
-            "2. Mid-term: Use Price vs EMA(50) to decide to Hold or Buy More. (Below EMA50 = Caution/Value).\n"
-            "3. Long-term: Use Policy (Nuclear/Defense) to stay in the stock for 10 years.\n\n"
-
-            "### VISUAL INDICATORS (MANDATORY):\n"
-            "- 🟢 BUY: Confidence Score > 0.7.\n"
-            "- 🟡 MONITOR: Confidence Score 0.4 - 0.7.\n"
-            "- 🔴 AVOID: Confidence Score < 0.4.\n"
-            
-            "### RESPONSE FORMAT (STRICT)\n"
-            "**[TICKER] | Score: [X.X/1.0] | ACTION: [BUY/WAIT/HOLD]**\n"
-            "**Reasoning:** (Explain using the 3 Layers: Trend, EMA50, and Policy)\n"
-            "**SIP Advice:** (Allocate ₹X,XXX today based on ₹20k monthly limit)\n"
-            "**Signal vs Debt:** (Signal: [Policy Win] | Debt: [Noise to Ignore])\n"
-            "---"
-        )
-
-        # Context Injection
-        user_message = (
-            f"Here is the Computed Strategic Data (EMA/Drift included):\n{json.dumps(prices[-1:] if prices else [], indent=2)}\n\n"
-            f"Recent Strategic News:\n{json.dumps(recent_news, indent=2)}\n\n"
-            "Generate the Strategic Alpha Report. Be blunt. Calculate the scores."
-        )
-
-        payload = {
-            "role": "system",
-            "content": system_prompt,
-        }
         
-        full_prompt = f"{json.dumps(payload)}\n\nUSER TASK:\n{user_message}"
-        return full_prompt
+        
+        # Validate Environment
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            logger.error("❌ GROQ_API_KEY missing from environment.")
+            return "ERROR: Missing API Key"
 
-    @classmethod
-    def _read_json(cls, path):
-        if not os.path.exists(path):
-            return []
-        with open(path, 'r') as f:
-            return json.load(f)
+        client = Groq(api_key=api_key)
+        
+        # The System Prompt is the 'Decision Layer'
+        system_prompt = """
+        You are the 'SIP Alpha Allocation Engine'. You manage a ₹{cls.TOTAL_BUDGET} monthly deployment.
+        Your role is to convert raw market data into capital deployment actions.
+        
+        
+        ### 1. SCORING MODEL (Strict Weighting: 30/20/50)
+        
+        - TREND (30% weight):
+            +1.0: 'is_structural_bull' is True AND 'market_structure' is 'BULLISH (HH/HL)'.
+            +0.5: 'market_structure' is 'RANGE_BOUND / FLATTENING' (regardless of price vs EMA50).
+            +0.0: 'market_structure' is 'BEARISH (LH/LL)' (The Falling Knife).
 
-if __name__ == "__main__":
-    print(BrainService.prepare_payload())
+        - NEWS (20% weight):
+            +1.0: Policy tailwind + EXECUTION evidence (Orders, Tenders, JV).
+            +0.5: Policy/Sector tailwind ONLY (Headlines).
+            +0.0: No relevant catalysts or negative execution.
+
+        - FUNDAMENTALS (50% weight):
+            +1.0: Margins > 8% (Stable or Improving).
+            +0.7: Margins 5–8% OR clear QoQ improvement.
+            +0.4: Turnaround narrative (Low margins but improving visibility).
+            +0.0: Structurally weak / Negative margins.
+
+        ### 2. ACTION BANDS (Capital Allocation)
+        - Score >= 0.7: 🟢 SIP AGGRESSIVE (Increase allocation)
+        - 0.5 - 0.69: 🟡 SIP NORMAL (Continue monthly)
+        - 0.3 - 0.49: 🟠 SIP PAUSE / WATCH (Maintain current, no new capital)
+        - < 0.3: 🔴 NO SIP (Discipline over emotion)
+        MATH: Individual Allocation = (Ticker Units / Total Units across all tickers) * ₹{cls.TOTAL_BUDGET}.
+        If all tickers are PAUSE/NO SIP, Allocation is ₹0 (Save cash).
+
+        ### 3. OUTPUT STRUCTURE (Telegram HTML)
+        - <b>🚀 SIP ALLOCATION SUMMARY</b>: Total deployment amount for the month.
+        - <b>Ticker Audit Table</b>: Wrapped in <pre> tags. Include Score, Action, and specific ₹ Allocation.
+        - <b>Re-entry Triggers</b>: What specifically moves a 'PAUSE' to 'NORMAL'.
+        - Reasoning: (Explain using the 3 Layers: Trend, EMA50, and Policy)
+        - SIP Advice:** (Allocate ₹X,XXX today based on ₹20k monthly limit)
+        """
+
+        # Dynamic Audit: Ensuring input data is focused on 'Trusted Decisions'
+        user_content = f"""
+        INPUT DATA:
+        Tickers (1Y Structural Audit): {json.dumps(prices[-1:] if prices else [], indent=2)}
+        News (Strategic Feed): {json.dumps(news, indent=2)}
+        
+        Apply the SIP Alpha Framework.
+        Determine the Buy/Sell/Hold action and specific fractional quantities for TODAY.
+        """
+
+        try:
+            logger.info("📡 Sending data to LLaMA 3.3 for decision mapping...")
+            response = client.chat.completions.create(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_content}
+                ],
+                model="llama-3.3-70b-versatile",
+                temperature=0.1 # Disciplined, non-creative output
+            )
+            
+            logger.info("✅ Decision Layer output received.")
+            return response.choices[0].message.content
+
+        except Exception as e:
+            logger.error(f"❌ Groq Inference Failed: {str(e)}")
+            return f"CRITICAL: SIP Engine Logic Failure - {str(e)}"

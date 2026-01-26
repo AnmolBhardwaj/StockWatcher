@@ -39,7 +39,26 @@ def verify_connection():
         # 3. Try sending a test message
         print(f"📡 Sending test message to {CHAT_ID}...")
         url_send = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
-        payload = {"chat_id": CHAT_ID, "text": "✅ Local Test: Connection Fixed."}
+        payload = {"chat_id": CHAT_ID, "text": """
+                   <b>📊 Strategic Sector Audit</b>
+
+<b>Market Status:</b> <i>OPEN</i>
+
+<b>Top Sectors</b>
+• <b>IT</b> — +1.24%
+• <b>Banking</b> — +0.87%
+• <b>Energy</b> — -0.42%
+
+<b>Key News</b>
+<a href="https://example.com">RBI policy update impacts banks</a>
+
+<b>Signal:</b>
+🟢 <b>ACCUMULATE</b>
+
+<code>Updated at: 09:45 IST</code>
+
+                   """,
+                   "parse_mode":"HTML"}
         
         send_res = requests.post(url_send, data=payload)
         send_res.raise_for_status()
