@@ -1,68 +1,7 @@
 [
   {
-    "date": "2026-01-25",
-    "time": "18:54:45",
-    "metrics": {
-      "BHEL.NS": {
-        "symbol": "BHEL.NS",
-        "price": 242.5,
-        "ema_20": 267.3,
-        "ema_50": 273.38,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
-        "debt_ratio": 44.956,
-        "margins": 0.026730001
-      },
-      "MTARTECH.NS": {
-        "symbol": "MTARTECH.NS",
-        "price": 2400.2,
-        "ema_20": 2515.79,
-        "ema_50": 2492.06,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
-        "debt_ratio": 25.061,
-        "margins": 0.06887
-      },
-      "WALCHANNAG.NS": {
-        "symbol": "WALCHANNAG.NS",
-        "price": 152.07,
-        "ema_20": 165.1,
-        "ema_50": 170.13,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
-        "debt_ratio": 55.731,
-        "margins": -0.44786
-      },
-      "LT.NS": {
-        "symbol": "LT.NS",
-        "price": 3743.8,
-        "ema_20": 3920.43,
-        "ema_50": 3977.77,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": false,
-        "debt_ratio": 111.847,
-        "margins": 0.059520002
-      },
-      "NTPC.NS": {
-        "symbol": "NTPC.NS",
-        "price": 336.7,
-        "ema_20": 339.04,
-        "ema_50": 334.22,
-        "drift": "DOWN",
-        "is_bullish": false,
-        "is_structural": true,
-        "debt_ratio": 127.753,
-        "margins": 0.12718001
-      }
-    }
-  },
-  {
-    "date": "2026-01-25",
-    "time": "19:01:22",
+    "date": "2026-01-26",
+    "time": "03:33:23",
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
