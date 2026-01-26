@@ -4,10 +4,9 @@ on:
   schedule:
     # MARKET HOURS: Runs every 30 mins from 3:45 AM UTC to 10:15 AM UTC (approx 9:15-3:45 IST)
     # 1-5 = Monday to Friday
-    - cron: '15,45 3-10 * * 1-5'
+    - cron: '15,45 3-9 * * 1-5'
+    - cron: '0 10 * * 1-5'
 
-    # NEWS WINDOWS: 6am, 3pm, 8pm, 12am IST
-    - cron: '30 0,9,14,18 * * *'
     
   workflow_dispatch: # Keep for manual testing
 
