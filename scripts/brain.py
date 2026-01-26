@@ -91,7 +91,7 @@ class BrainService:
         # Dynamic Audit: Ensuring input data is focused on 'Trusted Decisions'
         user_content = f"""
         INPUT DATA:
-        Tickers (1Y Structural Audit): {json.dumps(prices[-1:] if prices else [], indent=2)}
+        Tickers (1Y Structural Audit): {json.dumps(prices, indent=2)}
         News (Strategic Feed): {json.dumps(news, indent=2)}
         
         Apply the SIP Alpha Framework.
