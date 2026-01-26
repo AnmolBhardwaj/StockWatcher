@@ -15,6 +15,24 @@ class BrainService:
     NEWS_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "news_list.json")
     
     @classmethod
+    def _read_json(cls, file_path):
+        """Helper method to safely read JSON data."""
+        logger.info(f"📂 Reading data from: {file_path}")
+        if not os.path.exists(file_path):
+            logger.warning(f"⚠️ File not found: {file_path}")
+            return {}
+        try:
+            with open(file_path, 'r') as f:
+                data = json.load(f)
+                # If it's the price_list (a list of snapshots), take the last one
+                if isinstance(data, list) and len(data) > 0:
+                    return data[-1]
+                return data
+        except Exception as e:
+            logger.error(f"❌ Failed to parse JSON at {file_path}: {e}")
+            return {}
+
+    @classmethod
     def prepare_payload(cls):
         logger.info("🧠 Initializing SIP Alpha Deployment Engine...")
         
