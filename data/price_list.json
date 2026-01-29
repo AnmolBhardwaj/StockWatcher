@@ -1,56 +1,56 @@
 [
   {
-    "date": "2026-01-28",
+    "date": "2026-01-29",
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 259.65,
-        "ema_50": 269.27,
+        "price": 257.55,
+        "ema_50": 268.81,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-01-28T10:21:34.749668"
+        "timestamp": "2026-01-29T04:47:58.597693"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 2701.6,
-        "ema_50": 2454.47,
+        "price": 2666.2,
+        "ema_50": 2462.77,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.06887,
-        "timestamp": "2026-01-28T10:21:34.976063"
+        "timestamp": "2026-01-29T04:47:58.802594"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 176.99,
-        "ema_50": 170.89,
+        "price": 172.88,
+        "ema_50": 170.97,
         "is_structural_bull": true,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.44786,
-        "timestamp": "2026-01-28T10:21:35.271990"
+        "timestamp": "2026-01-29T04:47:59.038667"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 3794.0,
-        "ema_50": 3942.53,
+        "price": 3889.0,
+        "ema_50": 3940.43,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
         "margins": 0.059520002,
-        "timestamp": "2026-01-28T10:21:35.545865"
+        "timestamp": "2026-01-29T04:47:59.310460"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 348.05,
-        "ema_50": 335.48,
+        "price": 354.1,
+        "ema_50": 336.21,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
         "margins": 0.12718001,
-        "timestamp": "2026-01-28T10:21:35.814095"
+        "timestamp": "2026-01-29T04:47:59.570399"
       }
     }
   }
