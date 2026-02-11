@@ -1,56 +1,56 @@
 [
   {
-    "date": "2026-02-10",
+    "date": "2026-02-11",
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 276.1,
-        "ema_50": 268.92,
-        "is_structural_bull": true,
+        "price": 260.65,
+        "ema_50": 268.59,
+        "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-02-10T10:47:52.321249"
+        "timestamp": "2026-02-11T05:11:24.733900"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 3637.4,
-        "ema_50": 2691.74,
+        "price": 3557.8,
+        "ema_50": 2725.7,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-02-10T10:47:52.747469"
+        "timestamp": "2026-02-11T05:11:25.090165"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 180.4,
-        "ema_50": 174.62,
+        "price": 177.11,
+        "ema_50": 174.72,
         "is_structural_bull": true,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.31355,
-        "timestamp": "2026-02-10T10:47:53.172514"
+        "timestamp": "2026-02-11T05:11:25.344450"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 4169.0,
-        "ema_50": 3973.29,
+        "price": 4163.1,
+        "ema_50": 3980.73,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
         "margins": 0.057490002,
-        "timestamp": "2026-02-10T10:47:53.613992"
+        "timestamp": "2026-02-11T05:11:25.718358"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 366.9,
-        "ema_50": 341.12,
+        "price": 367.0,
+        "ema_50": 342.14,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
         "margins": 0.12892,
-        "timestamp": "2026-02-10T10:47:53.995780"
+        "timestamp": "2026-02-11T05:11:25.952749"
       }
     }
   }
