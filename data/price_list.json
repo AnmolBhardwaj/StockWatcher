@@ -4,53 +4,53 @@
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 263.3,
-        "ema_50": 268.39,
+        "price": 262.0,
+        "ema_50": 268.34,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-02-12T06:14:43.527555"
+        "timestamp": "2026-02-12T07:18:04.587903"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 3643.6,
-        "ema_50": 2761.46,
+        "price": 3588.0,
+        "ema_50": 2759.28,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-02-12T06:14:43.801083"
+        "timestamp": "2026-02-12T07:18:04.806956"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 173.97,
-        "ema_50": 174.66,
-        "is_structural_bull": false,
+        "price": 174.97,
+        "ema_50": 174.7,
+        "is_structural_bull": true,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.31355,
-        "timestamp": "2026-02-12T06:14:44.046233"
+        "timestamp": "2026-02-12T07:18:05.066154"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 4181.6,
-        "ema_50": 3988.88,
+        "price": 4188.4,
+        "ema_50": 3989.15,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
         "margins": 0.057490002,
-        "timestamp": "2026-02-12T06:14:44.330351"
+        "timestamp": "2026-02-12T07:18:05.338742"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 368.7,
-        "ema_50": 343.23,
+        "price": 368.9,
+        "ema_50": 343.24,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
         "margins": 0.12892,
-        "timestamp": "2026-02-12T06:14:44.590761"
+        "timestamp": "2026-02-12T07:18:05.612717"
       }
     }
   }
