@@ -4,53 +4,53 @@
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 257.5,
-        "ema_50": 266.79,
+        "price": 256.1,
+        "ema_50": 266.73,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-02-19T08:25:18.118172"
+        "timestamp": "2026-02-19T09:28:32.994316"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 3769.9,
-        "ema_50": 2932.09,
+        "price": 3753.0,
+        "ema_50": 2931.43,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-02-19T08:25:18.317656"
+        "timestamp": "2026-02-19T09:28:33.259922"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 170.75,
-        "ema_50": 174.34,
+        "price": 172.05,
+        "ema_50": 174.4,
         "is_structural_bull": false,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.31355,
-        "timestamp": "2026-02-19T08:25:18.560376"
+        "timestamp": "2026-02-19T09:28:33.599914"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 4290.5,
-        "ema_50": 4037.65,
+        "price": 4285.3,
+        "ema_50": 4037.45,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
         "margins": 0.057490002,
-        "timestamp": "2026-02-19T08:25:18.810816"
+        "timestamp": "2026-02-19T09:28:33.971934"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 365.2,
-        "ema_50": 347.5,
+        "price": 364.2,
+        "ema_50": 347.46,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
         "margins": 0.12892,
-        "timestamp": "2026-02-19T08:25:19.121182"
+        "timestamp": "2026-02-19T09:28:34.311918"
       }
     }
   }
