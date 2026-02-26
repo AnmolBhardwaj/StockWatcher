@@ -4,53 +4,53 @@
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 261.3,
-        "ema_50": 265.48,
+        "price": 262.65,
+        "ema_50": 265.53,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-02-26T07:59:41.517114"
+        "timestamp": "2026-02-26T09:03:58.350314"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 3667.0,
-        "ema_50": 3067.02,
+        "price": 3675.9,
+        "ema_50": 3067.37,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-02-26T07:59:41.875376"
+        "timestamp": "2026-02-26T09:03:58.572338"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 173.87,
+        "price": 173.8,
         "ema_50": 173.88,
         "is_structural_bull": false,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.31355,
-        "timestamp": "2026-02-26T07:59:42.253082"
+        "timestamp": "2026-02-26T09:03:58.811267"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 4293.3,
-        "ema_50": 4089.9,
+        "price": 4301.9,
+        "ema_50": 4090.23,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
         "margins": 0.057490002,
-        "timestamp": "2026-02-26T07:59:42.619225"
+        "timestamp": "2026-02-26T09:03:59.150554"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 379.25,
-        "ema_50": 353.19,
+        "price": 380.6,
+        "ema_50": 353.24,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
         "margins": 0.12892,
-        "timestamp": "2026-02-26T07:59:43.135281"
+        "timestamp": "2026-02-26T09:03:59.492094"
       }
     }
   }
