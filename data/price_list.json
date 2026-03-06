@@ -4,53 +4,53 @@
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 262.45,
-        "ema_50": 264.39,
+        "price": 263.35,
+        "ema_50": 264.43,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-03-06T07:51:05.355826"
+        "timestamp": "2026-03-06T08:55:13.648026"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 3799.6,
-        "ema_50": 3179.65,
+        "price": 3799.0,
+        "ema_50": 3179.62,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-03-06T07:51:05.720911"
+        "timestamp": "2026-03-06T08:55:13.967675"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 166.88,
-        "ema_50": 172.72,
+        "price": 166.75,
+        "ema_50": 172.71,
         "is_structural_bull": false,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.31355,
-        "timestamp": "2026-03-06T07:51:06.123650"
+        "timestamp": "2026-03-06T08:55:14.225565"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 3970.1,
-        "ema_50": 4081.04,
+        "price": 3979.0,
+        "ema_50": 4081.39,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
         "margins": 0.057490002,
-        "timestamp": "2026-03-06T07:51:06.389032"
+        "timestamp": "2026-03-06T08:55:14.520351"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 384.2,
+        "price": 384.15,
         "ema_50": 357.69,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
         "margins": 0.12892,
-        "timestamp": "2026-03-06T07:51:06.743223"
+        "timestamp": "2026-03-06T08:55:14.886016"
       }
     }
   }
