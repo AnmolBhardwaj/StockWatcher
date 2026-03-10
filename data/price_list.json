@@ -10,47 +10,47 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-03-10T04:51:01.426058"
+        "timestamp": "2026-03-10T05:59:08.276457"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 3725.1,
-        "ema_50": 3216.74,
+        "price": 3784.4,
+        "ema_50": 3219.07,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-03-10T04:51:01.732951"
+        "timestamp": "2026-03-10T05:59:08.830301"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 163.31,
-        "ema_50": 171.85,
+        "price": 163.11,
+        "ema_50": 171.84,
         "is_structural_bull": false,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.31355,
-        "timestamp": "2026-03-10T04:51:02.059162"
+        "timestamp": "2026-03-10T05:59:09.443333"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 3865.0,
-        "ema_50": 4062.82,
+        "price": 3860.7,
+        "ema_50": 4062.66,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 111.847,
         "margins": 0.057490002,
-        "timestamp": "2026-03-10T04:51:02.418637"
+        "timestamp": "2026-03-10T05:59:09.948964"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 378.8,
-        "ema_50": 359.09,
+        "price": 380.25,
+        "ema_50": 359.14,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 127.753,
         "margins": 0.12892,
-        "timestamp": "2026-03-10T04:51:02.892064"
+        "timestamp": "2026-03-10T05:59:10.448534"
       }
     }
   }
