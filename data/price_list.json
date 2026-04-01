@@ -4,53 +4,53 @@
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 251.69,
-        "ema_50": 260.44,
+        "price": 251.84,
+        "ema_50": 260.45,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 44.956,
         "margins": 0.026730001,
-        "timestamp": "2026-04-01T09:49:20.676786"
+        "timestamp": "2026-04-01T10:48:30.799611"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 3615.1,
-        "ema_50": 3347.2,
+        "price": 3603.6,
+        "ema_50": 3346.75,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-04-01T09:49:20.899227"
+        "timestamp": "2026-04-01T10:48:31.029655"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 142.95,
-        "ema_50": 160.63,
+        "price": 143.33,
+        "ema_50": 160.65,
         "is_structural_bull": false,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 55.731,
         "margins": -0.31355,
-        "timestamp": "2026-04-01T09:49:21.202430"
+        "timestamp": "2026-04-01T10:48:31.338587"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 3606.9,
-        "ema_50": 3840.25,
+        "price": 3607.5,
+        "ema_50": 3840.28,
         "is_structural_bull": false,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 111.847,
         "margins": 0.057490002,
-        "timestamp": "2026-04-01T09:49:21.507056"
+        "timestamp": "2026-04-01T10:48:31.600254"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 364.5,
+        "price": 364.65,
         "ema_50": 366.79,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 127.753,
         "margins": 0.12892,
-        "timestamp": "2026-04-01T09:49:21.786534"
+        "timestamp": "2026-04-01T10:48:31.879206"
       }
     }
   }
