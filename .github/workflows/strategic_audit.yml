@@ -53,7 +53,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Weekly: Update strategic data [skip ci]" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Weekly: Update strategic data [skip ci]" && git pull --rebase && git push)
 
   cyclical_check_morning:
     runs-on: ubuntu-latest
@@ -91,7 +91,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Cyclical 1: Update data [skip ci]" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Cyclical 1: Update data [skip ci]" && git pull --rebase && git push)
 
   cyclical_check_afternoon_1:
     runs-on: ubuntu-latest
@@ -129,7 +129,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Cyclical 2: Update data [skip ci]" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Cyclical 2: Update data [skip ci]" && git pull --rebase && git push)
 
   daily_sniper_check:
     runs-on: ubuntu-latest
@@ -167,4 +167,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Daily: Update strategic data [skip ci]" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Daily: Update strategic data [skip ci]" && git pull --rebase && git push)
