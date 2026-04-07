@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -52,8 +54,15 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
+          git fetch origin master
+          git reset --soft origin/master
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Weekly: Update strategic data [skip ci]" && git pull --rebase && git push)
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Weekly: Update strategic data [skip ci]"
+            git push origin HEAD:master
+          fi
 
   cyclical_check_morning:
     runs-on: ubuntu-latest
@@ -63,6 +72,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -90,8 +101,15 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
+          git fetch origin master
+          git reset --soft origin/master
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Cyclical 1: Update data [skip ci]" && git pull --rebase && git push)
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Cyclical 1: Update data [skip ci]"
+            git push origin HEAD:master
+          fi
 
   cyclical_check_afternoon_1:
     runs-on: ubuntu-latest
@@ -101,6 +119,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -128,8 +148,15 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
+          git fetch origin master
+          git reset --soft origin/master
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Cyclical 2: Update data [skip ci]" && git pull --rebase && git push)
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Cyclical 2: Update data [skip ci]"
+            git push origin HEAD:master
+          fi
 
   daily_sniper_check:
     runs-on: ubuntu-latest
@@ -139,6 +166,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -166,5 +195,12 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
+          git fetch origin master
+          git reset --soft origin/master
           git add data/ || echo "No data folder found to add"
-          git diff-index --quiet HEAD || (git commit -m "Daily: Update strategic data [skip ci]" && git pull --rebase && git push)
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Daily: Update strategic data [skip ci]"
+            git push origin HEAD:master
+          fi

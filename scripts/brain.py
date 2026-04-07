@@ -197,6 +197,7 @@ Line 4: 💎 Cyclical Hold: Rs.3,000
 RULES:
 - If market DOWNTREND (price < 200-DMA AND price < EMA50): Allocate Rs.15,000 (50%)
 - Otherwise: Allocate Rs.21,000 (70%)
+- DO NOT USE CODE BLOCKS, BACKTICKS, OR MARKDOWN FORMAT.
 - NOTHING ELSE. NO NARRATIVE. NO ANALYSIS.
 """
         elif is_cyclical:
@@ -215,6 +216,7 @@ Alert Format (per stock with signal):
 RULES:
 - MOMENTUM_UP: RSI > 50, break above resistance → Target +3%
 - OVERSOLD_BOUNCE: RSI < 20, showing reversal → Target +2%  
+- DO NOT USE CODE BLOCKS, BACKTICKS, OR MARKDOWN FORMAT.
 - NO NARRATIVE. NO EXPLANATIONS. FORMAT ONLY.
 """
         else:
@@ -233,6 +235,7 @@ RULES:
 - 200-DMA trigger: price <= 200-DMA → Deploy 40% (Rs.2,400)
 - OVERSOLD trigger: RSI < 30 → Deploy 30% (Rs.1,800)  
 - MACRO trigger: macro event exists → Deploy 30% (Rs.1,800)
+- DO NOT USE CODE BLOCKS, BACKTICKS, OR MARKDOWN FORMAT.
 - NO OTHER CONTENT. NO NARRATIVES. NO EXPLANATIONS.
 """
 

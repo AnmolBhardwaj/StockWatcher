@@ -43,30 +43,15 @@ def run_strategic_audit():
         return
 
     try:
-        client = Groq(api_key=api_key)
-        
-        # 1. GENERATE PAYLOAD (with execution mode set)
         payload_content = BrainService.prepare_payload()
-        
-        # 2. CALL LLaMA 3.3 70B
-        logger.info("📡 Analyzing with LLaMA 3.3 70B...")
-        completion = client.chat.completions.create(
-            messages=[{"role": "user", "content": payload_content}],
-            model="llama-3.3-70b-versatile",
-            temperature=0.1, # Lowest temp for math/logic adherence
-            max_tokens=2048  # Increased for playbook output
-        )
-        
-        response_text = completion.choices[0].message.content
+        response_text = payload_content
         
         # 3. NOTIFY
         if response_text:
-            # Format output for terminal display
             output_header = f"\n{'='*50}\n[{execution_mode} EXECUTION - {datetime.now().isoformat()}]\n{'='*50}\n"
             output_footer = f"\n{'='*50}\n"
             print(output_header + response_text + output_footer)
             
-            # Route to Telegram
             TelegramNotifier.send_alpha(response_text)
             logger.info(f"✅ {execution_mode} Cycle Complete.")
             

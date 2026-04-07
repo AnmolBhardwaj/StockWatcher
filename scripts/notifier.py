@@ -43,8 +43,8 @@ class TelegramNotifier:
             # Using your verified HTML structure
             formatted_msg = (
                 f"<b>📊 STRATEGIC ALPHA REPORT [{i+1}/{len(chunks)}]</b>\n\n"
-                f"<pre>{chunk}</pre>\n\n"
-                f"<code>Generated at: {time.strftime('%H:%M:%S IST')}</code>"
+                f"{chunk}\n\n"
+                f"<i>Generated at: {time.strftime('%H:%M:%S IST')}</i>"
             )
             
             if not cls._execute_send(token, chat_id, formatted_msg):
