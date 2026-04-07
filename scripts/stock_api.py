@@ -10,13 +10,21 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("SIP_Stock_API")
 
+# Module-level ticker definitions (required for class-level use)
+TICKERS_PSU = ["BHEL.NS", "MTARTECH.NS", "WALCHANNAG.NS", "LT.NS", "NTPC.NS"]
+# SNIPER stocks: Quality large-caps for tactical entry (200-DMA, RSI<30, Macro triggers)
+TICKERS_SNIPER = ["JIOFIN.NS", "MOTHERSON.NS", "MSUMI.NS", "INFY.NS", "MTARTECH.NS"]
+# CYCLICAL stocks: High-beta, liquid, momentum-driven intraday trades
+TICKERS_CYCLICAL = ["TATASTEEL.NS", "NATIONALUM.NS", "BALUFORGE.NS", "PNB.NS"]
+# Deduplicate: union of all tickers (PSU + Sniper except PSU overlaps + Cyclical except overlaps)
+TICKERS = TICKERS_PSU + [t for t in TICKERS_SNIPER if t not in TICKERS_PSU] + [t for t in TICKERS_CYCLICAL if t not in TICKERS_PSU and t not in TICKERS_SNIPER]
+
 class StockService:
-    # Original PSU/Defense stocks + 5 Sniper stocks for playbook
-    TICKERS_PSU = ["BHEL.NS", "MTARTECH.NS", "WALCHANNAG.NS", "LT.NS", "NTPC.NS"]
-    TICKERS_SNIPER = ["JIOFINANCIALS.NS", "MOTHERSUMI.NS", "MSUMI.NS", "LT.NS", "MTARTECH.NS"]
-    # NEW: Cyclical/Swing trade stocks (intraday/short-term momentum)
-    TICKERS_CYCLICAL = ["TATASTEEL.NS", "NATIONALUM.NS", "BALUFORGE.NS", "PNB.NS"]
-    TICKERS = TICKERS_PSU + [t for t in TICKERS_SNIPER if t not in TICKERS_PSU] + [t for t in TICKERS_CYCLICAL if t not in TICKERS_PSU and t not in TICKERS_SNIPER]
+    # Class-level constants reference module-level definitions
+    TICKERS_PSU = TICKERS_PSU
+    TICKERS_SNIPER = TICKERS_SNIPER
+    TICKERS_CYCLICAL = TICKERS_CYCLICAL
+    TICKERS = TICKERS
     DATA_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "price_list.json")
 
     @classmethod

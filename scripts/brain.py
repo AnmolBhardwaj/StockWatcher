@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json
 import os
 import logging
@@ -5,7 +6,6 @@ import yfinance as yf
 from datetime import datetime
 from groq import Groq
 
-# Custom Instruction: Always add lots of logs
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("PortfolioManager_Brain")
 
@@ -200,12 +200,12 @@ OUTPUT:
 ```
 🚀 DUMB MONEY ALLOCATION (Weekly)
 ━━━━━━━━━━━━━━━━━━━━━━
-📊 INDEX ALLOCATION: ₹21,000 (70% of ₹30,000)
-   - NIFTYBEES: ₹10,500
-   - NIFTYNXT: ₹10,500
+📊 INDEX ALLOCATION: Rs.21,000 (70% of Rs.30,000)
+   - NIFTYBEES: Rs.10,500
+   - NIFTYNXT: Rs.10,500
 
-💰 SNIPER HOLD: ₹6,000 (20%)
-💎 CYCLICAL HOLD: ₹3,000 (10%)
+💰 SNIPER HOLD: Rs.6,000 (20%)
+💎 CYCLICAL HOLD: Rs.3,000 (10%)
 ```
 """
         elif is_cyclical:
@@ -240,13 +240,13 @@ OUTPUT:
 ```
 📊 CYCLICAL MOMENTUM CHECK (Intraday)
 ━━━━━━━━━━━━━━━━━━━━━━━
-💵 Available Cash: ₹3,000
+💵 Available Cash: Rs.3,000
 
 🔍 MOMENTUM WATCH:
-  ✅ TATASTEEL | Price: ₹XXX | RSI: XX
+  ✅ TATASTEEL | Price: Rs.XXX | RSI: XX
      🟢 MOMENTUM_UP | Target: +3% | Entry: NOW ⚡
   
-  ⭕ NATIONALUM | Price: ₹XXX | RSI: XX
+  ⭕ NATIONALUM | Price: Rs.XXX | RSI: XX
      No triggers - WAIT
 
 💡 Trades to Exit:
@@ -279,65 +279,30 @@ OUTPUT:
 ```
 📊 SNIPER TRIGGER CHECK
 ━━━━━━━━━━━━━━━━━━━━━━━
-💵 Available Cash: ₹6,000
+💵 Available Cash: Rs.6,000
 
 🔍 TRIGGERS:
-  ✅ JIOFINANCIALS | RSI: 28 | 200-DMA: ₹260
-     🟠 OVERSOLD → Deploy: ₹1,800 ⚠️
+  ✅ JIOFINANCIALS | RSI: 28 | 200-DMA: Rs.260
+     🟠 OVERSOLD → Deploy: Rs.1,800 ⚠️
   
   ⭕ MOTHERSON | RSI: 45
      No triggers - WAIT
 
-💰 Remaining: ₹4,200
+💰 Remaining: Rs.4,200
 ```
-"""
-
-**Trigger 1: 200-Day Moving Average Touch**
-- If current_price <= 200-DMA (exact touch, 0% tolerance):
-  - Flag as TRIGGERED
-  - Deploy 40% of sniper cash
-  - Reasoning: Institutional support line, high-probability entry
-
-**Trigger 2: Oversold Panic (RSI < 30)**
-- If RSI(14) < 30:
-  - Flag as TRIGGERED
-  - Deploy 30% of sniper cash
-  - Reasoning: Extreme selling exhaustion, reversal likely
-
-**Trigger 3: Macro Overreaction**
-- If recent macro event exists (Fed rate, RBI policy, geopolitical) AND stock is NOT in structural downtrend:
-  - Flag as TRIGGERED
-  - Deploy 30% of sniper cash
-  - Reasoning: Market panic on event unrelated to company fundamentals
-
-OUTPUT FORMAT for Part B:
-```
-PART B: SNIPER TRIGGER ALERTS
-Total Sniper Cash: ₹X,XXX (25% of budget)
-
-Active Triggers:
-- [STOCK]: [TRIGGER_TYPE] | Recommended Deploy: ₹X,XXX
-- [STOCK]: [TRIGGER_TYPE] | Recommended Deploy: ₹X,XXX
-  (if any)
-
-If NO triggers fired: "NO TRIGGERS FIRED TODAY - Hold sniper cash at ₹X,XXX"
-```
-
-STRICT RULE: Deploy funds ONLY if trigger conditions are met. Do not invent reasons.
 """
 
     @classmethod
     def _build_user_content(cls, prices, news, triggers, cyclical, nifty_data, sniper_data, cyclical_data, is_monthly, is_cyclical):
         """Build user message with execution-mode-specific data."""
+        mode_label = "WEEKLY (Dumb Money)" if is_monthly else ("INTRADAY (Cyclical)" if is_cyclical else "DAILY (Sniper)")
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         
-        content = f"""
-=== TRI-PLAYBOOK DATA INPUT ===
-Execution Mode: {"WEEKLY (Dumb Money)" if is_monthly else "INTRADAY (Cyclical)" if is_cyclical else "DAILY (Sniper)"}
-Current Date/Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} IST
+        content = f"""=== TRI-PLAYBOOK DATA INPUT ===
+Execution Mode: {mode_label}
+Current Date/Time: {timestamp} IST
 Budget Allocation: 70% Dumb Money + 20% Sniper + 10% Cyclical
-
 """
-
         if is_monthly:
             content += f"""
 PART A DATA: NIFTY INDICES (Weekly Allocation Check)
@@ -353,6 +318,7 @@ Macro Context:
 {json.dumps([n for n in (news if isinstance(news, list) else []) if 'macro_trigger_type' in n][:5], indent=2)}
 """
         elif is_cyclical:
+            cyclical_cash = cyclical.get('current_cyclical_cash', cls.TOTAL_BUDGET * cls.CYCLICAL_PCT) if isinstance(cyclical, dict) else cls.TOTAL_BUDGET * cls.CYCLICAL_PCT
             content += f"""
 PART C DATA: CYCLICAL SWING TRADES (Intraday Momentum Check)
 
@@ -362,16 +328,17 @@ Current Cyclical Positions:
 Cyclical Stock Metrics:
 {json.dumps(cyclical_data, indent=2)}
 
-Available Cash for Cyclical: ₹{cyclical.get('current_cyclical_cash', cls.TOTAL_BUDGET * cls.CYCLICAL_PCT) if isinstance(cyclical, dict) else cls.TOTAL_BUDGET * cls.CYCLICAL_PCT}
+Available Cash for Cyclical: Rs.{int(cyclical_cash)}
 """
         else:
+            sniper_cash = triggers.get('current_sniper_cash', cls.TOTAL_BUDGET * cls.SNIPER_PCT) if isinstance(triggers, dict) else cls.TOTAL_BUDGET * cls.SNIPER_PCT
             content += f"""
 PART B DATA: SNIPER TACTICAL ENTRIES (Daily After Market Close)
 
 Sniper Stock Metrics:
 {json.dumps(sniper_data, indent=2)}
 
-Available Sniper Cash: ₹{triggers.get('current_sniper_cash', cls.TOTAL_BUDGET * cls.SNIPER_PCT) if isinstance(triggers, dict) else cls.TOTAL_BUDGET * cls.SNIPER_PCT}
+Available Sniper Cash: Rs.{int(sniper_cash)}
 
 Recent Macro Events (May trigger Macro Fear):
 {json.dumps([n for n in (news if isinstance(news, list) else []) if 'macro_trigger_type' in n][:3], indent=2)}
@@ -379,5 +346,4 @@ Recent Macro Events (May trigger Macro Fear):
 Recent Order Wins (May trigger Sniper):
 {json.dumps([n for n in (news if isinstance(news, list) else []) if 'ORDER_WIN' in n.get('category', '')][:3], indent=2)}
 """
-
         return content
