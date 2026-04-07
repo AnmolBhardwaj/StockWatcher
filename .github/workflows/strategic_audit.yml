@@ -2,19 +2,26 @@ name: Strategic Sector Audit Cron
 
 on:
   schedule:
-    # MARKET HOURS: Runs every 30 mins from 3:45 AM UTC to 10:15 AM UTC (approx 9:15-3:45 IST)
-    # 1-5 = Monday to Friday
-    - cron: '15,45 3-9 * * 1-5'
-    - cron: '0 10 * * 1-5'
-
+    # Weekly Job: Runs on Mondays at 3:45 AM UTC (9:15 AM IST) - Dumb Money Allocation
+    - cron: '45 3 * * 1'
     
+    # Daily Job 1: Runs every weekday at 5:30 AM UTC (11:00 AM IST) - Cyclical Check 1
+    - cron: '30 5 * * 1-5'
+    
+    # Daily Job 2: Runs every weekday at 7:30 AM UTC (1:00 PM IST) - Cyclical Check 2
+    - cron: '30 7 * * 1-5'
+    
+    # Daily Job 3: Runs every weekday at 10:15 AM UTC (3:45 PM IST) - Sniper Check + Cyclical Exit
+    - cron: '15 10 * * 1-5'
+
   workflow_dispatch: # Keep for manual testing
 
 jobs:
-  audit_and_poll:
+  weekly_dumb_money:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Explicitly allow writing to the repo
+      contents: write
+    if: github.event.schedule == '45 3 * * 1' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -27,28 +34,137 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install yfinance feedparser groq google-generativeai
+          pip install yfinance feedparser groq
 
-      - name: Execute Strategic Pipeline
+      - name: Execute Weekly (Dumb Money) Pipeline
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EXECUTION_MODE: MONTHLY
         run: |
-          # 1. Price Fetch (Will only run on the 30-min cron triggers)
+          echo "🚀 [WEEKLY EXECUTION] Dumb Money Index Allocation (Mondays 9:15 AM IST)"
           python scripts/stock_api.py
-          # 2. News Fetch
           python scripts/news_api.py
-          # 3. Groq Brain Audit
           python main.py
 
       - name: Persist Data Changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          # 1. Use the -f (force) or just add the directory
-          # 2. 'git add data/' won't crash if the folder is empty or doesn't exist
           git add data/ || echo "No data folder found to add"
-          
-          # 3. Only commit if there are actual changes to avoid 'empty commit' errors
-          git diff-index --quiet HEAD || (git commit -m "Update strategic data [skip ci]" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Weekly: Update strategic data [skip ci]" && git push)
+
+  cyclical_check_morning:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.event.schedule == '30 5 * * 1-5' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yfinance feedparser groq
+
+      - name: Execute Cyclical Check 1 (11 AM IST)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EXECUTION_MODE: CYCLICAL
+        run: |
+          echo "📊 [INTRADAY 1] Cyclical Momentum Check (11:00 AM IST)"
+          python scripts/stock_api.py
+          python scripts/news_api.py
+          python main.py
+
+      - name: Persist Data Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add data/ || echo "No data folder found to add"
+          git diff-index --quiet HEAD || (git commit -m "Cyclical 1: Update data [skip ci]" && git push)
+
+  cyclical_check_afternoon_1:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.event.schedule == '30 7 * * 1-5' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yfinance feedparser groq
+
+      - name: Execute Cyclical Check 2 (1 PM IST)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EXECUTION_MODE: CYCLICAL
+        run: |
+          echo "📊 [INTRADAY 2] Cyclical Momentum Check (1:00 PM IST)"
+          python scripts/stock_api.py
+          python scripts/news_api.py
+          python main.py
+
+      - name: Persist Data Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add data/ || echo "No data folder found to add"
+          git diff-index --quiet HEAD || (git commit -m "Cyclical 2: Update data [skip ci]" && git push)
+
+  daily_sniper_check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.event.schedule == '15 10 * * 1-5' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install yfinance feedparser groq
+
+      - name: Execute Daily (Sniper + Cyclical Exit) Pipeline
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EXECUTION_MODE: DAILY
+        run: |
+          echo "📊 [DAILY EXECUTION] Sniper Trigger Check + Cyclical EOD Exit (3:45 PM IST)"
+          python scripts/stock_api.py
+          python scripts/news_api.py
+          python main.py
+
+      - name: Persist Data Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add data/ || echo "No data folder found to add"
+          git diff-index --quiet HEAD || (git commit -m "Daily: Update strategic data [skip ci]" && git push)

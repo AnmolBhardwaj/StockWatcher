@@ -1,0 +1,19 @@
+{
+  "current_sniper_cash": 7500,
+  "last_updated": "2026-04-07",
+  "playbook": "Dumb Money (70-80%) + Sniper (20-30%)",
+  "sniper_stocks": [
+    "JIOFINANCIALS.NS",
+    "MOTHERSUMI.NS",
+    "MSUMI.NS",
+    "LT.NS",
+    "MTARTECH.NS"
+  ],
+  "trigger_thresholds": {
+    "dma_200_tolerance_percent": 0,
+    "rsi_oversold_threshold": 30,
+    "rsi_calculation_period": 14
+  },
+  "deployments": [],
+  "active_triggers": []
+}

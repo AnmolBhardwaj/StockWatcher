@@ -23,18 +23,35 @@ class NewsService:
         "Moneycontrol_Business": "https://www.moneycontrol.com/rss/business.xml"
     }
     
-    TICKERS = ["BHEL", "MTARTECH", "WALCHANNAG", "LT", "NTPC"]
+    TICKERS = ["BHEL", "MTARTECH", "WALCHANNAG", "LT", "NTPC", "JIOFINANCIALS", "MOTHERSUMI", "MSUMI"]
     
     # Keyword Weights for Relevance Scoring
     # Ticker Match: 5pts | High-Impact (Order/Contract): 4pts | Nuclear Context: 3pts
     IMPACT_KEYWORDS = ["ORDER", "CONTRACT", "TENDER", "L1", "MOU", "WIN"]
     NUCLEAR_KEYWORDS = ["SMR", "AERB", "NPCIL", "KUDANKULAM", "FAC", "CRITICALITY"]
     
+    # NEW: Macro Event Keywords for Sniper Triggers
+    MACRO_KEYWORDS = {
+        "FEDERAL_RESERVE": ["FEDERAL RESERVE", "FED RATE", "INTEREST RATE DECISION", "FOMC"],
+        "RBI_POLICY": ["RBI POLICY", "MONETARY POLICY", "REPO RATE", "RBI DECISION"],
+        "GEOPOLITICAL": ["UKRAINE", "RUSSIA", "CHINA", "SANCTION", "GEOPOLITICAL", "TRADE WAR"],
+        "INFLATION": ["INFLATION", "CPI", "DEFLATION", "PRICE SURGE"]
+    }
+    
     DATA_FILE = "data/news_list.json"
 
     @classmethod
+    def _detect_macro_trigger(cls, title):
+        """Detect if article contains macro event trigger. Returns trigger_type or None."""
+        title_upper = title.upper()
+        for trigger_type, keywords in cls.MACRO_KEYWORDS.items():
+            if any(kw in title_upper for kw in keywords):
+                return trigger_type
+        return None
+
+    @classmethod
     def fetch_and_filter(cls):
-        logger.info("🔍 [TASK: NEWS AGGREGATION] Scanning for Order Wins and Policy Shifts...")
+        logger.info("🔍 [TASK: NEWS AGGREGATION] Scanning for Order Wins, Macro Events, and Policy Shifts...")
         
         existing_news = cls._load_storage()
         seen_links = {item['link'] for item in existing_news}
@@ -51,15 +68,23 @@ class NewsService:
                     is_ticker_match = any(t in title for t in cls.TICKERS)
                     is_nuclear_match = any(nk in title for nk in cls.NUCLEAR_KEYWORDS)
                     is_impact_match = any(ik in title for ik in cls.IMPACT_KEYWORDS)
+                    macro_trigger = cls._detect_macro_trigger(title)
 
                     if is_ticker_match: score += 5
                     if is_impact_match: score += 4
                     if is_nuclear_match: score += 4 # Upgraded from 3 to 4
+                    if macro_trigger: score += 3  # Macro triggers get bonus points
 
                     # 2. Strategic Threshold
-                    # ALLOW if: Direct Ticker news (>=5) OR high-impact Nuclear news (>=4)
-                    if (score >= 4) and entry.link not in seen_links:
-                        category = "ORDER_WIN" if (is_ticker_match and is_impact_match) else "STRATEGIC"
+                    # ALLOW if: Direct Ticker news (>=5) OR high-impact Nuclear news (>=4) OR Macro event (>=3)
+                    if (score >= 3) and entry.link not in seen_links:
+                        # Determine category based on trigger type
+                        if macro_trigger:
+                            category = f"MACRO_TRIGGER_{macro_trigger}"
+                        elif is_ticker_match and is_impact_match:
+                            category = "ORDER_WIN"
+                        else:
+                            category = "STRATEGIC"
                         
                         news_item = {
                             "source": source_name,
@@ -68,7 +93,8 @@ class NewsService:
                             "link": entry.link,
                             "published": entry.get('published', datetime.now().strftime('%Y-%m-%d %H:%M')),
                             "relevance_score": score,
-                            "is_critical": score >= 9 # Flag for immediate Brain attention
+                            "is_critical": score >= 9, # Flag for immediate Brain attention
+                            "macro_trigger_type": macro_trigger  # NEW: Track macro type for sniper
                         }
                         existing_news.append(news_item)
                         seen_links.add(entry.link)

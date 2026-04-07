@@ -1,6 +1,7 @@
 # main.py
 import os
 import logging
+from datetime import datetime
 from groq import Groq
 from scripts.brain import BrainService
 from scripts.notifier import TelegramNotifier
@@ -10,8 +11,31 @@ from scripts.stock_api import StockService # Added direct import for safety
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("StrategicWatcher_Main")
 
+def determine_execution_mode():
+    """Determine execution mode based on current date and time."""
+    current_day = datetime.now().day
+    current_hour = datetime.now().hour  # UTC
+    # IST = UTC + 5:30, so 11 AM IST = 5:30 AM UTC, 1 PM IST = 7:30 AM UTC, 3:45 PM IST = 10:15 AM UTC
+    
+    # Override via environment variable for testing
+    if "EXECUTION_MODE" in os.environ:
+        return os.environ["EXECUTION_MODE"]
+    
+    # Determine mode by date/time
+    if current_day == 1 or (current_day == 2 and current_hour < 6):  # Monday on 1st or early 2nd
+        return "MONTHLY"
+    elif current_hour in [5, 7, 10]:  # 11 AM, 1 PM, 3:45 PM IST (approx)
+        return "CYCLICAL"
+    else:
+        return "DAILY"
+
 def run_strategic_audit():
-    logger.info("🎬 [SYSTEM START] 3-Layer Strategic Audit...")
+    logger.info("🎬 [SYSTEM START] Playbook-Based Investment Engine...")
+    
+    # Determine execution mode based on current date
+    execution_mode = determine_execution_mode()
+    os.environ["EXECUTION_MODE"] = execution_mode
+    logger.info(f"📅 Execution Mode: {execution_mode}")
     
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
@@ -21,7 +45,7 @@ def run_strategic_audit():
     try:
         client = Groq(api_key=api_key)
         
-        # 1. GENERATE PAYLOAD
+        # 1. GENERATE PAYLOAD (with execution mode set)
         payload_content = BrainService.prepare_payload()
         
         # 2. CALL LLaMA 3.3 70B
@@ -30,16 +54,21 @@ def run_strategic_audit():
             messages=[{"role": "user", "content": payload_content}],
             model="llama-3.3-70b-versatile",
             temperature=0.1, # Lowest temp for math/logic adherence
-            max_tokens=1024
+            max_tokens=2048  # Increased for playbook output
         )
         
         response_text = completion.choices[0].message.content
         
         # 3. NOTIFY
         if response_text:
-            print("\n" + "="*40 + "\n" + response_text + "\n" + "="*40)
+            # Format output for terminal display
+            output_header = f"\n{'='*50}\n[{execution_mode} EXECUTION - {datetime.now().isoformat()}]\n{'='*50}\n"
+            output_footer = f"\n{'='*50}\n"
+            print(output_header + response_text + output_footer)
+            
+            # Route to Telegram
             TelegramNotifier.send_alpha(response_text)
-            logger.info("✅ Cycle Complete.")
+            logger.info(f"✅ {execution_mode} Cycle Complete.")
             
     except Exception as e:
         logger.error(f"💥 Failure: {e}", exc_info=True)

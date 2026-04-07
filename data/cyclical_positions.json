@@ -1,0 +1,21 @@
+{
+  "current_cyclical_cash": 3000,
+  "last_updated": "2026-04-07",
+  "cyclical_stocks": [
+    "TATASTEEL.NS",
+    "NATIONALUM.NS",
+    "BALUFORGE.NS",
+    "PNB.NS"
+  ],
+  "active_positions": [],
+  "closed_trades": [],
+  "intraday_alerts": [],
+  "trigger_config": {
+    "rsi_momentum_threshold": 50,
+    "rsi_oversold_threshold": 20,
+    "profit_target_percent": 3,
+    "stop_loss_percent": 1,
+    "max_hold_days": 3,
+    "intraday_checks": ["11:00:00 IST", "13:00:00 IST", "15:45:00 IST"]
+  }
+}
