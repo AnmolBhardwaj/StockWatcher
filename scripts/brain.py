@@ -103,8 +103,10 @@ class BrainService:
             return response.choices[0].message.content
 
         except Exception as e:
-            logger.error(f"❌ Groq Inference Failed: {str(e)}")
-            return f"CRITICAL: Playbook Engine Failure - {str(e)}"
+            # Do not log raw exception text here; SDK/network errors can include request details.
+            error_type = type(e).__name__
+            logger.error("❌ Groq Inference Failed: %s", error_type)
+            return f"CRITICAL: Playbook Engine Failure - {error_type}"
 
     @classmethod
     def _fetch_nifty_indices(cls):

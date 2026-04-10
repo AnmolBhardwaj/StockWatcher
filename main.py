@@ -56,7 +56,7 @@ def run_strategic_audit():
             logger.info(f"✅ {execution_mode} Cycle Complete.")
             
     except Exception as e:
-        logger.error(f"💥 Failure: {e}", exc_info=True)
+        logger.error("💥 Failure: %s", type(e).__name__, exc_info=True)
 
 if __name__ == "__main__":
     run_strategic_audit()

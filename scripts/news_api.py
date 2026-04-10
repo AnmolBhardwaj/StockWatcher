@@ -102,7 +102,7 @@ class NewsService:
                         logger.info(f"📰 [{category}] Score {score}: {entry.title[:60]}...")
 
             except Exception as e:
-                logger.error(f"❌ Failed to parse {source_name}: {str(e)}")
+                logger.error("❌ Failed to parse %s: %s", source_name, type(e).__name__)
 
         # Technical Debt Pruning: Keep top 80, but SORT by relevance before slicing
         existing_news = sorted(existing_news, key=lambda x: x.get('relevance_score', 0), reverse=True)

@@ -38,7 +38,7 @@ class StockService:
             rsi = 100 - (100 / (1 + rs))
             return float(rsi.iloc[-1]) if not pd.isna(rsi.iloc[-1]) else None
         except Exception as e:
-            logger.warning(f"RSI calculation failed: {e}")
+            logger.warning("RSI calculation failed: %s", type(e).__name__)
             return None
 
     @classmethod
@@ -120,7 +120,7 @@ class StockService:
                 "timestamp": datetime.now().isoformat()
             }
         except Exception as e:
-            logger.error(f"❌ Structural Audit Error on {ticker_symbol}: {e}")
+            logger.error("❌ Structural Audit Error on %s: %s", ticker_symbol, type(e).__name__)
             return None
 
     @classmethod

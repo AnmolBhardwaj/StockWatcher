@@ -3,10 +3,18 @@ import os
 import logging
 import html
 import time
+from requests import RequestException
 
 logger = logging.getLogger("Telegram_Notifier")
 
 class TelegramNotifier:
+    @staticmethod
+    def _mask_chat_id(chat_id):
+        chat_id_str = str(chat_id or "")
+        if len(chat_id_str) <= 4:
+            return "****"
+        return f"{chat_id_str[:2]}***{chat_id_str[-2:]}"
+
     @classmethod
     def send_alpha(cls, text):
         # Retrieve tokens from Environment (Local .env or GitHub Secrets)
@@ -73,13 +81,20 @@ class TelegramNotifier:
             response.raise_for_status()
             logger.info("📡 Chunk delivered successfully.")
             return True
-        except Exception as e:
-            logger.error(f"❌ Telegram Delivery Error: {e}")
+        except RequestException as e:
+            # Avoid logging request details/URL because Telegram token is embedded in the URL path.
+            logger.error(
+                "❌ Telegram Delivery Error: %s (chat_id: %s)",
+                type(e).__name__,
+                cls._mask_chat_id(chat_id),
+            )
             # Final emergency fallback: Send as plain text if HTML tags are broken
             try:
                 payload.pop("parse_mode")
                 payload["text"] = f"⚠️ [FORMAT ERROR - RAW TEXT]:\n{message_text}"
-                requests.post(url, data=payload)
-            except:
+                requests.post(url, data=payload, timeout=15)
+            except RequestException:
                 pass
+        except Exception:
+            logger.error("❌ Telegram Delivery Error: unexpected exception.")
             return False
