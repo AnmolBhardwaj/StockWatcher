@@ -12,7 +12,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 31.312,
         "margins": 0.04737,
-        "timestamp": "2026-05-27T11:03:57.980118"
+        "timestamp": "2026-05-27T13:46:53.284692"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
@@ -24,7 +24,7 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 25.061,
         "margins": 0.084259994,
-        "timestamp": "2026-05-27T11:03:58.231237"
+        "timestamp": "2026-05-27T13:46:53.554285"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
@@ -36,7 +36,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 61.011,
         "margins": -0.053340003,
-        "timestamp": "2026-05-27T11:03:58.500053"
+        "timestamp": "2026-05-27T13:46:53.819375"
       },
       "LT.NS": {
         "symbol": "LT.NS",
@@ -48,7 +48,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 97.64,
         "margins": 0.05515,
-        "timestamp": "2026-05-27T11:03:58.827775"
+        "timestamp": "2026-05-27T13:46:54.182421"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
@@ -60,19 +60,19 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 118.127,
         "margins": 0.14437,
-        "timestamp": "2026-05-27T11:03:59.108247"
+        "timestamp": "2026-05-27T13:46:54.479597"
       },
       "JIOFIN.NS": {
         "symbol": "JIOFIN.NS",
         "price": 242.89,
-        "ema_50": 243.41,
-        "dma_200": 281.31,
+        "ema_50": 243.38,
+        "dma_200": 280.66,
         "rsi_14": 39.33,
         "is_structural_bull": false,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 16.286,
         "margins": 0.57768,
-        "timestamp": "2026-05-27T11:03:59.372486"
+        "timestamp": "2026-05-27T13:46:54.773715"
       },
       "MOTHERSON.NS": {
         "symbol": "MOTHERSON.NS",
@@ -84,7 +84,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 43.908,
         "margins": 0.030869998,
-        "timestamp": "2026-05-27T11:03:59.711267"
+        "timestamp": "2026-05-27T13:46:55.157719"
       },
       "MSUMI.NS": {
         "symbol": "MSUMI.NS",
@@ -96,7 +96,7 @@
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 10.786,
         "margins": 0.0547,
-        "timestamp": "2026-05-27T11:03:59.998242"
+        "timestamp": "2026-05-27T13:46:55.423499"
       },
       "INFY.NS": {
         "symbol": "INFY.NS",
@@ -108,7 +108,7 @@
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 9.827,
         "margins": 0.16434999,
-        "timestamp": "2026-05-27T11:04:00.317477"
+        "timestamp": "2026-05-27T13:46:55.723262"
       },
       "TATASTEEL.NS": {
         "symbol": "TATASTEEL.NS",
@@ -120,20 +120,9 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 89.016,
         "margins": 0.0465,
-        "timestamp": "2026-05-27T11:04:00.628074"
+        "timestamp": "2026-05-27T13:46:56.096303"
       },
-      "NATIONALUM.NS": {
-        "symbol": "NATIONALUM.NS",
-        "price": 433.05,
-        "ema_50": 400.41,
-        "dma_200": 303.72,
-        "rsi_14": 66.29,
-        "is_structural_bull": true,
-        "market_structure": "BULLISH (HH/HL)",
-        "debt_ratio": 0.277,
-        "margins": 0.3132,
-        "timestamp": "2026-05-27T11:04:01.010231"
-      },
+      "NATIONALUM.NS": "N/A",
       "BALUFORGE.NS": {
         "symbol": "BALUFORGE.NS",
         "price": 504.35,
@@ -144,7 +133,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 6.528,
         "margins": 0.22976999,
-        "timestamp": "2026-05-27T11:04:01.295279"
+        "timestamp": "2026-05-27T13:46:57.267759"
       },
       "PNB.NS": {
         "symbol": "PNB.NS",
@@ -156,7 +145,7 @@
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 0.0,
         "margins": 0.31221,
-        "timestamp": "2026-05-27T11:04:01.631214"
+        "timestamp": "2026-05-27T13:46:57.559012"
       }
     }
   }
