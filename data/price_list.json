@@ -12,19 +12,19 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 31.312,
         "margins": 0.06758,
-        "timestamp": "2026-08-05T10:05:09.649237"
+        "timestamp": "2026-08-05T12:13:04.992828"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
         "price": 6628.0,
-        "ema_50": 6493.51,
-        "dma_200": 4450.09,
-        "rsi_14": 49.0,
+        "ema_50": 6466.07,
+        "dma_200": 4467.62,
+        "rsi_14": 54.12,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 45.778,
         "margins": 0.12352,
-        "timestamp": "2026-08-05T10:05:10.045414"
+        "timestamp": "2026-08-05T12:13:05.597049"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
@@ -36,7 +36,7 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 61.011,
         "margins": -0.053340003,
-        "timestamp": "2026-08-05T10:05:10.452333"
+        "timestamp": "2026-08-05T12:13:05.997458"
       },
       "LT.NS": {
         "symbol": "LT.NS",
@@ -48,7 +48,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 97.64,
         "margins": 0.05588,
-        "timestamp": "2026-08-05T10:05:10.801308"
+        "timestamp": "2026-08-05T12:13:06.384490"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
@@ -60,7 +60,7 @@
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 118.127,
         "margins": 0.14531,
-        "timestamp": "2026-08-05T10:05:11.167204"
+        "timestamp": "2026-08-05T12:13:06.835171"
       },
       "JIOFIN.NS": {
         "symbol": "JIOFIN.NS",
@@ -72,7 +72,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 16.286,
         "margins": 0.55006003,
-        "timestamp": "2026-08-05T10:05:11.429324"
+        "timestamp": "2026-08-05T12:13:07.494177"
       },
       "MOTHERSON.NS": {
         "symbol": "MOTHERSON.NS",
@@ -84,7 +84,7 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 43.908,
         "margins": 0.03075,
-        "timestamp": "2026-08-05T10:05:11.759517"
+        "timestamp": "2026-08-05T12:13:08.288301"
       },
       "MSUMI.NS": {
         "symbol": "MSUMI.NS",
@@ -96,7 +96,7 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 10.788,
         "margins": 0.0547,
-        "timestamp": "2026-08-05T10:05:12.136481"
+        "timestamp": "2026-08-05T12:13:08.607006"
       },
       "INFY.NS": {
         "symbol": "INFY.NS",
@@ -108,7 +108,7 @@
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 9.541,
         "margins": 0.16370001,
-        "timestamp": "2026-08-05T10:05:12.502957"
+        "timestamp": "2026-08-05T12:13:09.029600"
       },
       "TATASTEEL.NS": {
         "symbol": "TATASTEEL.NS",
@@ -120,7 +120,7 @@
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 89.017,
         "margins": 0.04602,
-        "timestamp": "2026-08-05T10:05:12.982751"
+        "timestamp": "2026-08-05T12:13:09.381540"
       },
       "NATIONALUM.NS": {
         "symbol": "NATIONALUM.NS",
@@ -132,19 +132,19 @@
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 0.277,
         "margins": 0.34908,
-        "timestamp": "2026-08-05T10:05:13.379441"
+        "timestamp": "2026-08-05T12:13:09.777950"
       },
       "BALUFORGE.NS": {
         "symbol": "BALUFORGE.NS",
         "price": 445.9,
-        "ema_50": 454.86,
-        "dma_200": 506.91,
-        "rsi_14": 46.46,
+        "ema_50": 454.26,
+        "dma_200": 505.98,
+        "rsi_14": 48.96,
         "is_structural_bull": false,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 9.524,
         "margins": 0.23379,
-        "timestamp": "2026-08-05T10:05:13.702489"
+        "timestamp": "2026-08-05T12:13:10.124189"
       },
       "PNB.NS": {
         "symbol": "PNB.NS",
@@ -156,7 +156,7 @@
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 0.0,
         "margins": 0.38147,
-        "timestamp": "2026-08-05T10:05:14.007599"
+        "timestamp": "2026-08-05T12:13:10.457194"
       }
     }
   }
