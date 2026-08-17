@@ -1,162 +1,162 @@
 [
   {
-    "date": "2026-08-14",
+    "date": "2026-08-17",
     "metrics": {
       "BHEL.NS": {
         "symbol": "BHEL.NS",
-        "price": 421.7,
-        "ema_50": 401.14,
-        "dma_200": 322.97,
-        "rsi_14": 54.95,
+        "price": 429.8,
+        "ema_50": 402.26,
+        "dma_200": 323.9,
+        "rsi_14": 71.49,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 31.312,
         "margins": 0.06758,
-        "timestamp": "2026-08-14T11:06:58.764356"
+        "timestamp": "2026-08-17T04:23:28.687313"
       },
       "MTARTECH.NS": {
         "symbol": "MTARTECH.NS",
-        "price": 7056.0,
-        "ema_50": 6607.28,
-        "dma_200": 4635.61,
-        "rsi_14": 70.57,
+        "price": 7130.0,
+        "ema_50": 6647.7,
+        "dma_200": 4642.63,
+        "rsi_14": 71.24,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 45.778,
         "margins": 0.12352,
-        "timestamp": "2026-08-14T11:06:59.052569"
+        "timestamp": "2026-08-17T04:23:29.052232"
       },
       "WALCHANNAG.NS": {
         "symbol": "WALCHANNAG.NS",
-        "price": 224.8,
-        "ema_50": 239.54,
-        "dma_200": 200.9,
-        "rsi_14": 41.25,
+        "price": 226.11,
+        "ema_50": 239.33,
+        "dma_200": 200.87,
+        "rsi_14": 42.4,
         "is_structural_bull": false,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 61.011,
-        "margins": -0.00975,
-        "timestamp": "2026-08-14T11:06:59.447606"
+        "margins": -0.00982,
+        "timestamp": "2026-08-17T04:23:29.491864"
       },
       "LT.NS": {
         "symbol": "LT.NS",
-        "price": 4057.0,
-        "ema_50": 3976.53,
-        "dma_200": 3952.07,
-        "rsi_14": 76.15,
+        "price": 4031.3,
+        "ema_50": 3978.68,
+        "dma_200": 3952.63,
+        "rsi_14": 70.77,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 97.64,
         "margins": 0.05588,
-        "timestamp": "2026-08-14T11:06:59.781679"
+        "timestamp": "2026-08-17T04:23:30.023027"
       },
       "NTPC.NS": {
         "symbol": "NTPC.NS",
-        "price": 340.0,
-        "ema_50": 352.49,
-        "dma_200": 356.98,
-        "rsi_14": 39.13,
+        "price": 337.8,
+        "ema_50": 351.92,
+        "dma_200": 356.96,
+        "rsi_14": 43.37,
         "is_structural_bull": false,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 118.127,
         "margins": 0.14531,
-        "timestamp": "2026-08-14T11:07:00.079243"
+        "timestamp": "2026-08-17T04:23:30.438438"
       },
       "JIOFIN.NS": {
         "symbol": "JIOFIN.NS",
-        "price": 249.05,
-        "ema_50": 245.25,
-        "dma_200": 259.75,
-        "rsi_14": 61.57,
+        "price": 246.35,
+        "ema_50": 245.29,
+        "dma_200": 259.44,
+        "rsi_14": 58.21,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 16.286,
         "margins": 0.55006003,
-        "timestamp": "2026-08-14T11:07:00.338083"
+        "timestamp": "2026-08-17T04:23:30.979745"
       },
       "MOTHERSON.NS": {
         "symbol": "MOTHERSON.NS",
-        "price": 168.3,
-        "ema_50": 149.26,
-        "dma_200": 127.2,
-        "rsi_14": 75.1,
+        "price": 168.7,
+        "ema_50": 150.02,
+        "dma_200": 127.51,
+        "rsi_14": 77.57,
         "is_structural_bull": true,
         "market_structure": "BULLISH (HH/HL)",
         "debt_ratio": 43.908,
         "margins": 0.033570003,
-        "timestamp": "2026-08-14T11:07:00.736779"
+        "timestamp": "2026-08-17T04:23:31.395021"
       },
       "MSUMI.NS": {
         "symbol": "MSUMI.NS",
-        "price": 40.35,
-        "ema_50": 40.03,
-        "dma_200": 41.77,
-        "rsi_14": 51.78,
+        "price": 40.5,
+        "ema_50": 40.06,
+        "dma_200": 41.71,
+        "rsi_14": 38.26,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 10.788,
         "margins": 0.05088,
-        "timestamp": "2026-08-14T11:07:01.034592"
+        "timestamp": "2026-08-17T04:23:31.774239"
       },
       "INFY.NS": {
         "symbol": "INFY.NS",
-        "price": 1169.2,
-        "ema_50": 1130.38,
-        "dma_200": 1314.1,
-        "rsi_14": 69.82,
+        "price": 1152.6,
+        "ema_50": 1130.17,
+        "dma_200": 1310.39,
+        "rsi_14": 60.8,
         "is_structural_bull": true,
         "market_structure": "BEARISH (LH/LL)",
         "debt_ratio": 9.541,
         "margins": 0.16370001,
-        "timestamp": "2026-08-14T11:07:01.413902"
+        "timestamp": "2026-08-17T04:23:32.201251"
       },
       "TATASTEEL.NS": {
         "symbol": "TATASTEEL.NS",
-        "price": 183.5,
-        "ema_50": 190.56,
-        "dma_200": 189.34,
-        "rsi_14": 48.64,
+        "price": 183.33,
+        "ema_50": 190.28,
+        "dma_200": 189.35,
+        "rsi_14": 51.34,
         "is_structural_bull": false,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 89.017,
         "margins": 0.04602,
-        "timestamp": "2026-08-14T11:07:01.752559"
+        "timestamp": "2026-08-17T04:23:32.637182"
       },
       "NATIONALUM.NS": {
         "symbol": "NATIONALUM.NS",
-        "price": 376.0,
-        "ema_50": 369.61,
-        "dma_200": 351.53,
-        "rsi_14": 63.65,
+        "price": 384.6,
+        "ema_50": 370.2,
+        "dma_200": 352.3,
+        "rsi_14": 68.13,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 0.277,
         "margins": 0.34908,
-        "timestamp": "2026-08-14T11:07:02.275377"
+        "timestamp": "2026-08-17T04:23:33.078734"
       },
       "BALUFORGE.NS": {
         "symbol": "BALUFORGE.NS",
-        "price": 493.75,
-        "ema_50": 456.83,
-        "dma_200": 500.6,
-        "rsi_14": 68.72,
+        "price": 519.0,
+        "ema_50": 459.26,
+        "dma_200": 499.99,
+        "rsi_14": 72.38,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 9.524,
         "margins": 0.23379,
-        "timestamp": "2026-08-14T11:07:02.596693"
+        "timestamp": "2026-08-17T04:23:33.443514"
       },
       "PNB.NS": {
         "symbol": "PNB.NS",
-        "price": 118.0,
-        "ema_50": 110.18,
-        "dma_200": 112.69,
-        "rsi_14": 73.12,
+        "price": 115.97,
+        "ema_50": 110.4,
+        "dma_200": 112.68,
+        "rsi_14": 63.67,
         "is_structural_bull": true,
         "market_structure": "RANGE_BOUND / FLATTENING",
         "debt_ratio": 0.0,
         "margins": 0.38147,
-        "timestamp": "2026-08-14T11:07:02.913136"
+        "timestamp": "2026-08-17T04:23:33.991066"
       }
     }
   }
